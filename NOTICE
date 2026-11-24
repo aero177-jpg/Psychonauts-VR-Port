@@ -1,0 +1,12 @@
+Psychonauts VR mod
+Copyright 2026 Rototrobot
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Derived in part from the Tomb Raider: Legend and Underworld VR mods by the
+same author (Apache-2.0). This repository also contains third-party code
+under its own licences (DXVK: zlib/libpng; TRAWindowed, Dear ImGui: MIT;
+OpenXR SDK, Vulkan headers: Apache-2.0). See THIRD_PARTY_NOTICES.md.
+
+Psychonauts is a trademark of its owners. This project is an unofficial fan
+modification and contains no game data.

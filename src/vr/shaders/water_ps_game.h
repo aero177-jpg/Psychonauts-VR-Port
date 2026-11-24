@@ -1,0 +1,26 @@
+#pragma once
+// The game's Water.fpo and CheapWater.fpo (ps_1_1) as it creates them, to
+// recognise them at CreatePixelShader (stereo_patch_pixel_shader). Taken
+// from <game>/WorkResource/PixelShaders/fpo on 2026-11-16.
+
+#include <cstdint>
+
+namespace psyvr
+{
+    const uint32_t kGameWaterPs[48] = {
+        0xFFFF0101u, 0x00000051u, 0xA00F0001u, 0x3F800000u, 0x3F800000u, 0x3F800000u,
+        0x3F800000u, 0x00000042u, 0xB00F0000u, 0x00000043u, 0xB00F0001u, 0xB0E40000u,
+        0x00000043u, 0xB00F0002u, 0xB0E40000u, 0x00000043u, 0xB00F0003u, 0xB0E40000u,
+        0x00000008u, 0x801F0001u, 0x94E40000u, 0xB4E40003u, 0x00000005u, 0x800F0001u,
+        0x80E40001u, 0x80E40001u, 0x00000005u, 0x800F0001u, 0x80E40001u, 0x80E40001u,
+        0x00000005u, 0x80070000u, 0x80E40001u, 0x80E40001u, 0x00000004u, 0x80070000u,
+        0xB0FF0003u, 0xB0E40001u, 0x80E40000u, 0x00000004u, 0x80070000u, 0xB0E40002u,
+        0xB6FF0003u, 0x80E40000u, 0x40000001u, 0x80080000u, 0xA0FF0001u, 0x0000FFFFu,
+    };
+    const uint32_t kGameCheapWaterPs[19] = {
+        0xFFFF0101u, 0x00000051u, 0xA00F0001u, 0x3F800000u, 0x3F800000u, 0x3F800000u,
+        0x3F800000u, 0x00000042u, 0xB00F0000u, 0x00000043u, 0xB00F0001u, 0xB0E40000u,
+        0x00000001u, 0x800F0000u, 0xB0E40001u, 0x00000001u, 0x80080000u, 0xA0FF0001u,
+        0x0000FFFFu,
+    };
+}

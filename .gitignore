@@ -1,0 +1,16 @@
+/build/
+/dist/
+/dxvk-psyvr/build-win32/
+*.obj
+*.pdb
+*.exp
+*.lib
+*.dll
+*.dmp
+
+# The OpenXR loader import library is needed to build the proxy.
+!/third_party/openxr/lib/**/*.lib
+
+# Local test artefacts
+psyvr_shots/
+psyvr.log

@@ -1,0 +1,4 @@
+LIBRARY
+EXPORTS
+    psyvr_logic_create
+    psyvr_logic_destroy

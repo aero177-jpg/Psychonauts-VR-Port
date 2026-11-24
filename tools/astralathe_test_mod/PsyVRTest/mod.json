@@ -1,0 +1,7 @@
+{
+  "id": "com.psyvr.testhooks",
+  "name": "PsyVR test hooks",
+  "description": "Test-only: runs psyvr_menu.lua from the game folder when the main menu level starts. Installed by tools/drive.ps1 for automated tests.",
+  "author": "psyvr",
+  "version": "0.1.0"
+}

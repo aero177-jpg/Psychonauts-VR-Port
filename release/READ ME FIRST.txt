@@ -1,0 +1,231 @@
+PSYCHONAUTS  --  VR MOD
+======================
+
+This adds stereoscopic VR, head tracking, a floating menu/HUD screen and
+motion-controller input to the Steam version of Psychonauts (2005).
+
+It is an early release. It has been played on a Quest 3 over Virtual Desktop
+and run in an OpenXR simulator, but not on every headset, runtime or graphics
+card. Expect rough edges.
+
+
+WHAT YOU NEED
+-------------
+ * Psychonauts from Steam (Psychonauts.exe). Other versions (GOG, disc) are
+   not supported; see KNOWN LIMITS.
+ * A Quest 3 and Virtual Desktop, with the Virtual Desktop Streamer app
+   installed on the PC. Its 32-bit OpenXR runtime is found automatically.
+   Other headsets and runtimes are untested.
+ * A GPU with Vulkan support (the mod translates the game's Direct3D 9 to
+   Vulkan with DXVK).
+ * Windows. Controllers with thumbsticks, triggers and grips.
+
+Not needed: Astralathe (the Psychonauts mod loader). The mod works without it.
+If you have Astralathe installed, the installer adds a small optional part for
+it (ModResource\PsyVR); nothing changes in play.
+
+
+INSTALL
+-------
+ 1. Extract the whole zip to a folder anywhere (right-click it > Extract All).
+    Do not run Install.bat from inside the zip: Windows does not unpack the
+    other files for it.
+ 2. Double-click Install.bat. Windows may show "Windows protected your PC":
+    click More info, then Run anyway. The installer finds the Steam copy of
+    the game by itself, copies the mod next to Psychonauts.exe and checks the
+    rest of the set-up. If it cannot find the game it asks you to pick the
+    folder.
+ 3. Connect your Quest 3 to the PC with Virtual Desktop, then start the game
+    from Steam as usual, or with "Play Psychonauts VR.bat" from the game
+    folder.
+
+The first run writes psyvr.ini and psyvr.log next to the game.
+
+The mod sets the game's resolution to the headset's in DisplaySettings.ini
+(windowed). Your own copy is kept as DisplaySettings.ini.psyvr-backup and
+put back by Uninstall.bat and by "Play Psychonauts UNMODDED.bat".
+
+If another mod already put a d3d9.dll in the game folder (ReShade, for
+example), the installer keeps it as d3d9.dll.psyvr-backup (this mod IS a
+d3d9.dll and only one can be there); Uninstall.bat puts it back.
+
+Updating: unzip the new package and run its Install.bat. Your settings
+(psyvr.ini) are kept.
+
+Manual install, if the installer does not work for you: copy everything inside
+the "Game files" folder next to Psychonauts.exe (usually
+C:\Program Files (x86)\Steam\steamapps\common\Psychonauts), after moving any
+other d3d9.dll out of that folder.
+
+
+HD TEXTURE PACKS (OPTIONAL)
+---------------------------
+Texture packs such as "Shibanauts HD Mod" are loaded by Astralathe, a separate
+Psychonauts mod loader, not by this mod; the two work side by side. The pack
+is not included and is not ours: get it from its author. This is how it was
+installed and tested (Astralathe 2.1.1, Quest 3):
+
+ 1. Install Astralathe into the game folder, following its own instructions:
+    https://gitlab.com/scrunguscrungus/astralathe/-/wikis/Installing%20Astralathe
+    The first start afterwards can take a couple of minutes while it unpacks
+    the game's assets.
+ 2. Extract the pack. The download is about 2.7 GB and unpacks to about 10 GB
+    (the game folder needs the room). It contains one folder, "Shibanauts HD
+    Mod", with a "Textures" folder inside. Move that folder into the game's
+    ModResource folder and rename it ShibanautsHD:
+      ...\Psychonauts\ModResource\ShibanautsHD\Textures\...
+ 3. The pack ships without a mod.json, and Astralathe ignores a mod folder
+    that has none. In ModResource\ShibanautsHD create a text file named
+    exactly mod.json (not mod.json.txt) containing:
+
+      {
+        "id": "com.shibanauts.hd",
+        "name": "Shibanauts HD Mod",
+        "description": "HD texture pack",
+        "author": "Shibanauts",
+        "version": "1.0.0"
+      }
+
+ 4. Start the game. Astralathe has a mod menu in the game; make sure the pack
+    is enabled there. astralathe.log (in the game folder) says "Registered
+    mod Shibanauts HD Mod" when it was found.
+
+Things to know:
+ * Psychonauts is a 32-bit program with 2 GB of address space. In testing the
+   whole game, with the pack, used about 1.1 GB of it, and psyvr.log prints
+   the figure every few seconds ("address space ... / 2048 MB"). If the game
+   ever crashes after a while, lower [vr] resolution_scale or [graphics] msaa
+   to free memory.
+ * Level loads can take longer with a pack this size.
+ * The mod recognises a few effects by the size of their texture (the ground
+   pound's orange flash, for one), and packs make those textures larger.
+   [graphics] texture_pack_compat (on by default; also in the overlay's
+   Performance section) allows for that. Turn it off if something looks wrong
+   with a pack installed.
+ * To go back: disable the pack in Astralathe's menu, or move its folder out
+   of ModResource.
+
+
+PLAYING WITHOUT THE MOD
+-----------------------
+Double-click "Play Psychonauts UNMODDED.bat" (in the game folder). It puts
+your own DisplaySettings.ini back and starts the game as it was: the mod's
+d3d9.dll stays in place but hands Direct3D straight to Windows, so there is no
+VR, no DXVK, and no psyvr.ini or psyvr.log is written. The next "Play ... VR"
+start is a mod start again.
+
+From Steam instead: right-click the game > Properties > Launch Options, and
+enter:   cmd /c "set PSYVR_DISABLE=1&& %command%"   (clear it to use the mod).
+Or create an empty file named psyvr_off.flag in the game folder (delete it to
+turn the mod back on). Either way the game keeps the VR resolution in
+DisplaySettings.ini; change it in the game's options if you want.
+
+
+UNINSTALL
+---------
+Double-click Uninstall.bat. It removes the files the installer put in the game
+folder, restores any d3d9.dll that was there before, and puts your own
+DisplaySettings.ini back. psyvr.ini and psyvr.log are kept; delete them
+yourself if you want. Psychonauts.exe is never modified, and your saves are
+never touched.
+
+By hand: delete d3d9.dll, psyvr_logic.dll, d3d9_dxvk.dll and the two
+"Play Psychonauts ... .bat" files from the game folder, and rename
+DisplaySettings.ini.psyvr-backup back to DisplaySettings.ini.
+
+
+CONTROLS (defaults; every button can be remapped in psyvr.ini [controls])
+--------
+The game sees the controllers as an ordinary Xbox pad, so its own gamepad
+controls and on-screen prompts apply. A real pad plugged in still works.
+
+ Left stick ........... move                Right stick .......... camera
+ Right A / right B .... A / B               Left X / left Y ...... X / Y
+ Left grip / right grip  LB / RB            Triggers ............. LT / RT
+ Left menu button ..... Start (pause); hold 0.6 s: the settings overlay
+ Right menu button .... Back (Touch controllers have none: remap it)
+
+ Left stick click, then slide the left stick ... D-pad (left = the item wheel,
+                                                 up / down = camera zoom)
+ Right stick click, tap .... the view glides back behind Raz
+ Right stick click, hold ... switch view: classic, god mode, first person
+ Right stick clicked in and pushed ... zoom (left / right), raise / lower
+                                       the view (up / down)
+ Both stick clicks ........ recentre the view
+ Keyboard: F8 recentre, Insert the settings overlay
+
+The settings overlay's "Controls (button guide)" section draws these on a
+pair of Quest 3 controllers and follows any remapping you make in psyvr.ini.
+
+
+VIEWS
+-----
+ * Classic: the game's own chase camera around you, life size. The horizon is
+   kept level ([vr] horizon_lock): look up and down with your head.
+ * God mode: the world shown small, Raz a few centimetres tall, seen from a
+   seat above and behind him, like a tabletop. The right stick turns the view
+   round Raz and zooms; clicked in and pushed, it resizes Raz and raises or
+   lowers the seat.
+ * First person: through Raz's eyes.
+ * Cutscenes play on a floating screen in a dark room ([theatre] mode = 1).
+
+
+SETTINGS
+--------
+Open psyvr.ini in Notepad. psyvr.sample.ini in this package lists every
+setting with its default and what it does. A few useful ones:
+
+   [vr] resolution_scale   each eye's render size (lower = faster, less memory)
+   [vr] cull_fov_degrees   how wide the game draws (raise if things pop out at
+                           the edges of your view)
+   [vr] world_scale        game units per metre (default 100 = life size)
+   [vr] horizon_lock       off, auto or on
+   [hud] distance, width_degrees   where the gameplay HUD floats
+   [hud] menu_distance, menu_width_degrees   the same for menus
+   [camera] chase_radius_scale   how far the camera follows behind Raz
+   [theatre] mode          0 off, 1 cutscenes on a screen, 2 always
+   [god] raz_height_cm     how tall Raz looks in god mode
+   [graphics] msaa         2 by default; 4 is sharper and slower, 0 is off
+   [graphics] max_frame_rate   0 = unlocked
+   [graphics] fast_fades   on: things fading in or out far away cost much less
+                           (same picture); off = the game's own way
+   [graphics] texture_pack_compat   on: allow for larger replacement textures
+   [vr] loading_screens    2 = loading screens shown on the floating screen
+
+Most view, HUD and control settings apply without restarting: edit the file,
+then create an empty file called reload.flag in the game folder. The settings
+overlay (Insert on the keyboard, or hold the left menu button in VR) changes
+the same settings while you play.
+
+
+TROUBLESHOOTING
+---------------
+ * The game opens flat in a window: no 32-bit OpenXR runtime was found or the
+   headset is not connected. psyvr.log says why ("xr: ..." / "vr: ...").
+ * The picture looks inside out or at the wrong depth: report it with
+   psyvr.log.
+ * The frame rate is low: the Performance section of the settings overlay
+   (lower Resolution scale or MSAA first).
+ * Things vanish at the edges of your view: raise [vr] cull_fov_degrees.
+ * Windows may block the mod. It replaces a system DLL name, which looks like
+   what malware does. If your antivirus objects, exclude the game folder.
+   Windows Smart App Control refuses unsigned code outright and has no
+   exclusion list; the only fix is turning it off.
+ * Crashes write psyvr_crash.dmp next to the game. Send it with psyvr.log.
+
+
+KNOWN LIMITS
+------------
+ * Steam build only (Psychonauts.exe, build stamp 0x568C5772). On another
+   build each game patch whose code differs is skipped (psyvr.log lists them),
+   so VR may run with features missing, or not at all.
+ * Change the game's resolution only with the mod off: the mod sets it for the
+   headset, and a change while the game runs is not handled.
+ * New and not yet tried much in a headset: god mode (the seat can pass
+   through walls), the theatre's "window" style ([theatre] style = 1), the
+   3D lock-on reticle ([hud] lock_reticle).
+ * Tested on one headset and one set of Touch controllers.
+ * HD texture packs: only the one pack above has been tried, and a pack that
+   large leaves the 32-bit game little spare memory (see HD TEXTURE PACKS).
+
+Licences are in the Licences folder.

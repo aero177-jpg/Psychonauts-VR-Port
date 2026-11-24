@@ -1,0 +1,7 @@
+{
+  "id": "com.psyvr.vr",
+  "name": "PsyVR",
+  "description": "Camera settings for the Psychonauts VR mod (d3d9.dll). Its Scripts/Dart_hooks.lua is written by the VR mod at startup from psyvr.ini [camera].",
+  "author": "psyvr",
+  "version": "0.1.0"
+}
