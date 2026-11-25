@@ -3,7 +3,7 @@
 A VR mod for the Steam version of Psychonauts (2005): stereo rendering with 6DoF head tracking,
 your VR controllers as the game's pad, and the HUD and menus on a floating screen.
 
-**Version:** 0.1.0. Steam build of `Psychonauts.exe` only. If something looks wrong, it may come from one of the performance options
+**Version:** 0.1.0. Tested on the Steam build only. If something looks wrong, it may come from one of the performance options
 (all can be switched off in the settings overlay), or simply from this being an old game with its
 own original optimisations.
 
