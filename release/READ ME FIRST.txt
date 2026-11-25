@@ -4,18 +4,18 @@ PSYCHONAUTS  --  VR MOD
 This adds stereoscopic VR, head tracking, a floating menu/HUD screen and
 motion-controller input to the Steam version of Psychonauts (2005).
 
-It is an early release. It has been played on a Quest 3 over Virtual Desktop
-and run in an OpenXR simulator, but not on every headset, runtime or graphics
-card. Expect rough edges.
+If something looks wrong, it may come from one of the
+performance options (the settings overlay can switch them off) or from the
+game's own original optimisations.
 
 
 WHAT YOU NEED
 -------------
  * Psychonauts from Steam (Psychonauts.exe). Other versions (GOG, disc) are
    not supported; see KNOWN LIMITS.
- * A Quest 3 and Virtual Desktop, with the Virtual Desktop Streamer app
-   installed on the PC. Its 32-bit OpenXR runtime is found automatically.
-   Other headsets and runtimes are untested.
+ * A headset with a 32-bit OpenXR runtime (for example Virtual Desktop's,
+   which is found automatically). If yours is not found, set
+   [vr] xr_runtime_json in psyvr.ini.
  * A GPU with Vulkan support (the mod translates the game's Direct3D 9 to
    Vulkan with DXVK).
  * Windows. Controllers with thumbsticks, triggers and grips.
@@ -35,7 +35,7 @@ INSTALL
     the game by itself, copies the mod next to Psychonauts.exe and checks the
     rest of the set-up. If it cannot find the game it asks you to pick the
     folder.
- 3. Connect your Quest 3 to the PC with Virtual Desktop, then start the game
+ 3. Connect your headset to the PC, then start the game
     from Steam as usual, or with "Play Psychonauts VR.bat" from the game
     folder.
 
