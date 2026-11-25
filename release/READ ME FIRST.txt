@@ -12,7 +12,7 @@ game's own original optimisations.
 WHAT YOU NEED
 -------------
  * Psychonauts from Steam (Psychonauts.exe). Other versions (GOG, disc) are
-   not supported; see KNOWN LIMITS.
+   untested; see KNOWN LIMITS.
  * A headset with a 32-bit OpenXR runtime (for example Virtual Desktop's,
    which is found automatically). If yours is not found, set
    [vr] xr_runtime_json in psyvr.ini.
