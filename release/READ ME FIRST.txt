@@ -216,9 +216,9 @@ TROUBLESHOOTING
 
 KNOWN LIMITS
 ------------
- * Steam build only (Psychonauts.exe, build stamp 0x568C5772). On another
-   build each game patch whose code differs is skipped (psyvr.log lists them),
-   so VR may run with features missing, or not at all.
+ * Tested on the Steam build only (Psychonauts.exe, build stamp 0x568C5772).
+   On another build each game patch whose code differs is skipped (psyvr.log
+   lists them), so VR may run with features missing, or not at all.
  * Change the game's resolution only with the mod off: the mod sets it for the
    headset, and a change while the game runs is not handled.
  * New and not yet tried much in a headset: god mode (the seat can pass

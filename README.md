@@ -59,7 +59,7 @@ game folder. The overlay changes the same settings while you play.
 
 ## Caveats
 
-- **Steam build only** (`Psychonauts.exe` stamp `0x568C5772`). On another build, patches that do not
+- **Tested on the Steam build only** (`Psychonauts.exe` stamp `0x568C5772`). On another build, patches that do not
   match are skipped, so features may be missing. The installer warns.
 - **It is a `d3d9.dll`.** ReShade and other d3d9 mods are moved aside on install and put back on
   uninstall.
