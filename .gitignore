@@ -14,3 +14,9 @@
 # Local test artefacts
 psyvr_shots/
 psyvr.log
+
+# Local only, never published: assistant notes and machine-specific tools
+CLAUDE.md
+.claude/
+tools/vanilla.ps1
+local/
